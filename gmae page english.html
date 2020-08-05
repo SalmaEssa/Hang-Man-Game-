@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+ <head>
+    
+  <meta charset="utf-8" >
+     
+  <title>hangman</title>
+     <link rel="stylesheet" href="../CSS/game.css" type="text/css">
+
+ </head>
+
+
+<body>
+ <audio id="audio">
+<source src="../game%20sound/pop.WAV" type="audio/ogg">
+</audio>
+  <audio id="Sound" repeated loop autoplay src="../game%20sound/Track.mp3" type="audio/mpeg"> 
+  
+</audio>
+    <a href="page5%20english.html"><div class="pause" ><input type="image" src="../images/pause.png" width="80px" height="70px" onclick="playAudio()"></div></a>
+	
+     <div class="sound"><input type="image"  id="img" src="../images/sound.png" width="60px" height="60px"  onclick="gamesound()" ></div><br>
+	<div class="reset"><input type="button" id="reset" value="reset" ></div>
+
+  <div class="hang"><img src="../images/hangman_0.gif" id="mainimage" width= 350 height=330></div>
+    
+     
+  <input type="text" maxlength="1"  placeholder="type letter" required  pattern="[Aa-Zz]"  >
+          <form >    <input type="button" value="Hint" id="form-button" onclick="playAudio()"> </form>
+    
+     <form >
+    <input type="submit" value="submit" onclick="playAudio()" >
+    </form >
+   
+    
+<script>
+       document.getElementById('form-button').onclick = function () {
+    this.disabled = true;
+}
+    </script>
+    <script>
+      var x = document.getElementById("audio"); 
+     function playAudio()
+      { 
+       x.play(); 
+       }
+    </script>
+    <script>
+   function gamesound(audioFile)
+  {
+    var audio = document.getElementById("Sound");
+    var image = document.getElementById('img');
+    if(!audio.src) 
+       audio.src = audioFile;
+    if(audio.paused == false)
+     {
+        audio.pause();
+          image.src = "../images/mute.png";
+     }
+     else
+     {
+        image.src = "../images/sound.png";  
+       audio.play();
+     }
+  }
+ </script>
+    <script>
+var myimage=document.getElementById('mainimage');
+var imagearray=["../images/hangman_0.gif","../images/hangman_1.gif","../images/hangman_2.gif","../images/hangman_3.gif","../images/hangman_4.gif","../images/hangman_5.gif","../images/hangman_6.gif","../images/hangman_7.gif","../images/hangman_8.gif","../images/hangman_9.gif"];
+var imageindex=1;
+     </script>
+       <script>
+    function changeimage(){
+      myimage.setAttribute("src",imagearray[imageindex]);
+      imageindex++;
+       if (imageindex>9){location.href="../HTML/page7 english.html"}
+                  }
+    </script>
+
+    </body>
+</html>
